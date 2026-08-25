@@ -12,56 +12,155 @@ Site web permettant de visualiser l'historique des performances aux Jeux Olympiq
 - **Chart.js** 
 - **ESLint** 
 
-## Problèmes actuels
+## Problèmes actuels et solutions
+
+### Anti-pattern 1
+**Problème**
+Données codées en dur dans le App.tsx
+
+![Anti-pattern 1](./public/anti-pattern1.PNG)
+
+**Solution proposée**
+Créer un dossier mock en attendant de développer l'API back-end
+
+---
+
+### Anti-pattern 2
+**Problème**
+Incohérence avec le nom du fichier et le composant, const Home dans dossier App.tsx
+
+![Anti-pattern 2](./public/anti-pattern2.PNG)
+
+**Solution proposée**
+Créer une convention de nommage, suivre une logique
+
+---
+
+### Anti-pattern 3
+**Problème**
+Utilisation de `any`, trop large et incompatible avec TypeScript
+
+![Anti-pattern 3](./public/anti-pattern3.PNG)
+
+**Solution proposée**
+Typer correctement les données et états
+
+---
+
+### Anti-pattern 4
+**Problème**
+useEffect avec logique lourde dans le composant
+
+**Solution proposée**
+Créer un custom hook
+
+---
+
+### Anti-pattern 5
+**Problème**
+Présence de multiple console.log()
+
+**Solution proposée**
+Les retirer une fois que la phase de développement est terminée
+
+---
+
+### Anti-pattern 6
+**Problème**
+Logique métier directement dans le composant
+
+![Anti-pattern 6](./public/anti-pattern6.PNG)
+
+**Solution proposée**
+Créer une fonction utilitaire dans /utils/
+
+---
+
+### Anti-pattern 7
+**Problème**
+Logique d'état de chargement basée sur l'absence des données
+
+**Image**
+![Anti-pattern 7](./public/anti-pattern7.PNG)
+
+**Solution proposée**
+Créer des états loading, errors et !data pour différencier les situations
+
+---
+
+### Anti-pattern 8
+**Problème**
+Cartes dupliquées dans chartOptions
+
+![Anti-pattern 8](./public/anti-pattern8.PNG)
+
+**Solution proposée**
+Créer un composant réutilisable
+
+---
+
+### Anti-pattern 9
+**Problème**
+Composant avec variable non-utilisée (Country), plusieurs composants dans le même fichier
+
+![Anti-pattern 9](./public/anti-pattern9.PNG)
+
+**Solution proposée**
+Séparer dans une autre page, garder en commentaire
+
+---
+
+### Anti-pattern 10
+**Problème**
+Préparation des données du graphique dans le composant
+
+![Anti-pattern 9](./public/anti-pattern9.PNG)
+
+**Solution proposée**
+Extraire dans une fonction ou un hook pour séparer UI et logique
+
+---
+
+### Anti-pattern 11
+**Problème**
+Présence du routing dans le dossier App.tsx
+
+**Solution proposée**
+Mettre dans un fichier à part
+
+---
+
+### Anti-pattern 12
+**Problème**
+Pas de gestion d'erreur
+
+**Solution proposée**
+Ajouter des messages d'erreurs et créer une page 404
+
+---
+
+### Anti-pattern 13
+**Problème**
+Pas de landmarks clairs
+
+![Anti-pattern 13](./public/anti-pattern13.PNG)
+
+**Solution proposée**
+Créer un header, footer, nav et une logique dans les h1, h2, text, etc
+
+---
+
+### Anti-pattern 14
+**Problème**
+Note de bas de page indique "cliquez sur un pays pour avoir ses détails" alors que pas d'événement au clic
+
+![Anti-pattern 14](./public/anti-pattern14.PNG)
+
+**Solution proposée**
+Aligner le texte aux actions possibles, ne pas afficher si actions en cours de développement
 
 
-- Données codées en dur dans le App.tsx 
-    ![Anti-pattern 1](./public/anti-pattern1.PNG)
-    Solution: Créer un dossier mock en attendant de dévolopper l'API back-end
-- Incohérence avec le nom du ficher et le composant
-    -> const Home dans dossier App.tsx
-    Solution: Créer une convention de nommage, suivre une logique
-- Utilisation de <any>, trop large et incompatible avec Typescript
-    Solution: Typer
-- Anti-pattern 4  
-- Utilisation du Strict Mode, exécute en double
-    Solution: Le retirer à la fin de la phase de développement
-- Présence de mutiple console.log()
-    Solution: Les retirer une fois que la phase de développement est terminée
-- Logique métier directement dans le composant
-    Solution: Créer une fonction utilitaire /utils/
-- Logique d'état de chargement basé sur la l'abscence des données
-    ![Anti-pattern 7](./public/anti-pattern7.PNG)
-    Solution: Créer des états loading, errors et !data pour différencer les situations
-- chartData dans le dossier principal, avec du css et des données en dur (texte)
-    Solution: Créer un dossier dédié, 
 
-
-### Anti-pattern
-- Anti-pattern 1 — Données hardcodées dans le composant — idéalement : hook ou module séparé.
-- Anti-pattern 2 — Composant incohérent avec le nom du fichier (ex. Home dans App.tsx).
-- Anti-pattern 3 — Utilisation de `any` — typer pour garder les bénéfices TypeScript.
-- Anti-pattern 4 — useEffect avec logique lourde dans le composant — idéalement : custom hook ou librairie de fetching de données (ex. react-query).
-  // De plus en mode développement, le "strict mode" de React est activé, ce qui va éxecuter ce code 2
-- Anti-pattern 5 — console.log à retirer.
-- Anti-pattern 6 — Logique métier complexe directement dans le composant.
-- Anti-pattern 7 — État de chargement dérivé des données au lieu d'un état dédié (loading/error).
-- Anti-pattern 8 — Cartes dupliquées — extraire en composant réutilisable (Indicator.tsx). 
-
-- Anti-pattern 9 — Plusieurs composants dans le même fichier — un fichier par composant recommandé.
-    // Composant non utilisé pour le moment, mais conservé pour la suite du projet. (Country)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-
-- Anti-pattern 10 — Préparation des données du graphique dans le composant — extraire dans une fonction ou un hook pour séparer UI et logique. https://react.dev/learn/thinking-in-react
-
-- Anti-pattern 11 — Routing dans App.tsx — idéalement : module dédié.
-
-
-Mauvaise division des fichiers, css dans app, data en dur dans app, composants devraient être réutilisables, variable non utilisée (country), tableau chatrs dans app, data en dur dans le composant charts, routing dans app,
-
-Pas de page d'erreur, pas accessible, pas de landmarks (header, footer, etc), manque h2, h3, txt. 
-Dossier trop volumineux, diminution du first build
-Note bas de page: cliquez sur un pays pour avoir ses détails mais c'est hover
 
 Faire une page d'erreur, screeenshot et explications, faire une page de découpage de projet/doc 
 src/app/
@@ -69,3 +168,29 @@ src/app/
   ├── pages/  
   ├── hooks/  
   ├── models/  
+
+
+
+
+
+  📁 src/
+  📁 assets/
+  📁 components/
+    ├── Indicator.tsx
+    └── ChartComponent.tsx
+  📁 hooks/
+    └── useOlympicsData.ts
+  📁 pages/
+    ├── Home.tsx
+    ├── Country.tsx
+    └── NotFound.tsx
+  📁 types/
+    └── olympics.ts
+  📁 utils/
+    └── olympicsCalculations.ts
+  📁 mock/
+    └── olympicsData.ts
+  📁 router/
+    └── routes.tsx
+  App.tsx
+  main.tsx
