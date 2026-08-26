@@ -117,7 +117,7 @@ Préparation des données du graphique dans le composant
 ![Anti-pattern 9](./public/anti-pattern9.PNG)
 
 **Solution proposée**
-Extraire dans une fonction ou un hook pour séparer UI et logique
+Extraire dans une fonction pour séparer UI et logique (/utils)
 
 ---
 
@@ -159,38 +159,33 @@ Note de bas de page indique "cliquez sur un pays pour avoir ses détails" alors 
 **Solution proposée**
 Aligner le texte aux actions possibles, ne pas afficher si actions en cours de développement
 
+## Structures des fichers src/
 
-
-
-Faire une page d'erreur, screeenshot et explications, faire une page de découpage de projet/doc 
-src/app/
-  ├── components/  
-  ├── pages/  
-  ├── hooks/  
-  ├── models/  
-
-
-
-
-
+```
   📁 src/
-  📁 assets/
-  📁 components/
-    ├── Indicator.tsx
-    └── ChartComponent.tsx
-  📁 hooks/
-    └── useOlympicsData.ts
-  📁 pages/
-    ├── Home.tsx
-    ├── Country.tsx
-    └── NotFound.tsx
-  📁 types/
-    └── olympics.ts
-  📁 utils/
-    └── olympicsCalculations.ts
-  📁 mock/
-    └── olympicsData.ts
-  📁 router/
-    └── routes.tsx
-  App.tsx
-  main.tsx
+    📁 components/
+      └── Header.tsx (header et nav des pages - dumb)
+      └── HeaderChart.tsx (composant header réutilisable pour les charts - dumb)
+      └── MedalChart.tsx (graphique des médailles - dumb)
+      └── CountryCard.tsx (carte infos des pays - dumb)
+    📁 hooks/
+      └── useData.ts (récupère les données, utilise Axios pour simuler le futur back-end, useState - smart)
+    📁 pages/
+      ├── Home.tsx (page d'accueil)
+      ├── Country.tsx (page contenant les détails pour chaque pays)
+      └── Error.tsx (page d'erruer, redirige vers Home.tsx)
+    📁 models/
+      └── types.ts (définitions des interfaces TypeScript - dumb)
+    📁 utils/
+      └── olympicsCalculations.ts (calculs reliées au chart, réutilisable - smart)
+    📁 mock/
+      └── olympicsData.ts (données mocks en attendant la back-end)
+    📁 router/
+      └── routes.tsx (React router pour la naviguation entre les pages)
+    app.tsx
+    main.tsx
+    index.css
+
+```
+
+
