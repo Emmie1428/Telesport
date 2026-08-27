@@ -168,6 +168,7 @@ Aligner le texte aux actions possibles, ne pas afficher si actions en cours de d
       └── HeaderChart.tsx (composant header réutilisable pour les charts - dumb)
       └── MedalChart.tsx (graphique des médailles - dumb)
       └── CountryCard.tsx (carte infos des pays - dumb)
+      └── Router.tsx (React router pour la naviguation entre les pages - smart)
     📁 hooks/
       └── useData.ts (récupère les données, utilise Axios pour simuler le futur back-end, useState - smart)
     📁 pages/
@@ -178,11 +179,10 @@ Aligner le texte aux actions possibles, ne pas afficher si actions en cours de d
       └── types.ts (définitions des interfaces TypeScript - dumb)
     📁 utils/
       └── olympicsCalculations.ts (calculs reliées au chart, réutilisable - smart)
-    📁 mock/
-      └── olympicsData.ts (données mocks en attendant la back-end)
-    📁 router/
-      └── routes.tsx (React router pour la naviguation entre les pages)
-    app.tsx
+    📁 mocks/
+      └── olympicsMockDatas.ts (données mocks en attendant la back-end)
+      
+    App.tsx
     main.tsx
     index.css
 
