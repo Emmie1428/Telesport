@@ -1,5 +1,6 @@
-import { useState, useEffect, type FC } from 'react'
-import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
+
+import { BrowserRouter} from 'react-router-dom'
+import Router from './components/Router'
 import {
   Chart as ChartJS,
   ArcElement,
@@ -26,7 +27,7 @@ ChartJS.register(
 
 
 // Anti-pattern 2 — Composant incohérent avec le nom du fichier (ex. Home dans App.tsx).
-const Home: FC = () => {
+/*const Home: FC = () => {
   // Anti-pattern 3 — Utilisation de `any` — typer pour garder les bénéfices TypeScript.
   const [data, setData] = useState<any>(null)
 
@@ -111,7 +112,7 @@ const Home: FC = () => {
           </p>
         </div>
 
-        {/* Anti-pattern 8 — Cartes dupliquées — extraire en composant réutilisable (Indicator.tsx). */}
+        //Anti-pattern 8 — Cartes dupliquées — extraire en composant réutilisable (Indicator.tsx).//
         <div className="mb-2">
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center mb-2">
             <h3 className="text-xl font-semibold mb-2">Pays participants</h3>
@@ -139,12 +140,12 @@ const Home: FC = () => {
       </div>
     </div>
   )
-}
+}*/
 
 // Anti-pattern 9 — Plusieurs composants dans le même fichier — un fichier par composant recommandé.
 // Composant non utilisé pour le moment, mais conservé pour la suite du projet.
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Country: FC = () => {
+/*const Country: FC = () => {
   const { id } = useParams()
 
   // Anti-pattern 5 — console.log à retirer.
@@ -215,7 +216,7 @@ const Country: FC = () => {
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">{country.name}</h1>
 
-        {/* Anti-pattern 8 — Cartes dupliquées avec Home — extraire en composant réutilisable (Indicator.tsx). */}
+        // Anti-pattern 8 — Cartes dupliquées avec Home — extraire en composant réutilisable (Indicator.tsx). //
         <div className="mb-2">
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-2">
             <h3 className="text-xl font-semibold mb-2">Participations</h3>
@@ -246,17 +247,15 @@ const Country: FC = () => {
     </div>
   )
 }
-
+*/
 // Anti-pattern 11 — Routing dans App.tsx — idéalement : module dédié.
-export const App: FC = () => {
-  // Anti-pattern 5 — console.log à retirer.
-  console.log('App rendered')
-
+function App () {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <Router/>
     </BrowserRouter>
   )
 }
+export default App
+
+  
