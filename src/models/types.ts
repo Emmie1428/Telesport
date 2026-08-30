@@ -12,3 +12,12 @@ export interface Olympic {
     country: string,
     participations: Participation[]
 }
+
+export interface PageContent {
+    id: string,
+    pageTitle: string,
+    pageDescription: string,
+    pageSubtitle: string, 
+    dataEntry: number,
+    footnote: string
+}

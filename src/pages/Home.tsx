@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import type { Olympic } from '../models/types'
-import { getAllCountriesData } from '../services/API'
+import { getAllCountriesData, getPageContent } from '../services/API'
+import ChartHeader from '../components/ChartHeader'
 
 function Home() {
     const [allCountries, setAllCountries] = useState<Olympic[] | null>(null)
@@ -23,23 +24,29 @@ function Home() {
         fetchAllCountries()
     }, [])
 
+
     if (hasError) return <div>Erreur lors du chargement des données</div>
     if (!isLoaded) return <div>Chargement...</div>
 
+    //Défini le id du contenu de page à home et vérifie la présence de données sinon erreur
+    const pageContent = getPageContent("home")
+        if (!pageContent) return <div>Erreur: contenu de page introuvable</div>
+
     // Statistiques globales
     const totalCountries = allCountries?.length || 0
-    const totalGames = new Set(
+    /*const totalGames = new Set(
         allCountries?.flatMap(c => c.participations.map(p => p.year))
-    ).size || 0
+    ).size || 0*/
 
     return (
         <div>
-            <h1>Dashboard Olympique</h1>
-            <div>
-                <p>Pays participants: {totalCountries}</p>
-                <p>Jeux olympiques: {totalGames}</p>
-            </div>
-            {/* Pie chart avec allCountries */}
+            <ChartHeader
+            pageTitle={pageContent.pageTitle}
+            pageDescription={pageContent.pageDescription}
+            pageSubtitle={pageContent.pageSubtitle}
+            dataEntry={totalCountries}
+            footnote={pageContent.footnote}
+             />
         </div>
     )
 

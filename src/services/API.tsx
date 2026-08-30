@@ -1,12 +1,15 @@
 import axios from 'axios'
-import type { Olympic } from '../models/types'
+import type { Olympic, PageContent } from '../models/types'
 import { olympicMockData } from '../mocks/olympicMockData'
+import { pageContentMockData } from '../mocks/pageContentMockData'
 
 const apiURL = import.meta.env.VITE_BASE_URL
 const USE_MOCK = true  //true pour passer sur les mockDatas//
 
+//Pour Typescript
 type ConfigKey = 'allCountries' | 'country'
 
+//Configuration des types d'infos//
 const CONFIG = {
     allCountries: {
         endpoint: () => '/',
@@ -43,5 +46,10 @@ export async function fetchData(type: ConfigKey, userId: number | null = null): 
     }
 }
 
+//Call des fonctions pour chaque type//
 export const getAllCountriesData = () => fetchData("allCountries")
 export const getCountryData = (userId: number) => fetchData("country", userId)
+
+// Fonction pour récupérer les contenus de type texte des pages
+export const getPageContent = (id: string): PageContent | undefined => {
+    return pageContentMockData.find(content => content.id === id)}

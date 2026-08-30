@@ -1,7 +1,7 @@
 
 import { BrowserRouter} from 'react-router-dom'
 import Router from './components/Router'
-import {
+/*import {
   Chart as ChartJS,
   ArcElement,
   Tooltip,
@@ -23,7 +23,7 @@ ChartJS.register(
   BarElement,
   LineElement,
   PointElement,
-)
+)*/
 
 
 // Anti-pattern 2 — Composant incohérent avec le nom du fichier (ex. Home dans App.tsx).
@@ -144,7 +144,7 @@ ChartJS.register(
 
 // Anti-pattern 9 — Plusieurs composants dans le même fichier — un fichier par composant recommandé.
 // Composant non utilisé pour le moment, mais conservé pour la suite du projet.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 /*const Country: FC = () => {
   const { id } = useParams()
 

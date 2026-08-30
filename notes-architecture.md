@@ -165,7 +165,7 @@ Aligner le texte aux actions possibles, ne pas afficher si actions en cours de d
   📁 src/
     📁 components/
       └── Header.tsx (header et nav des pages - dumb)
-      └── HeaderChart.tsx (composant header réutilisable pour les charts - dumb)
+      └── ChartHeader.tsx (composant header réutilisable pour les charts - dumb)
       └── MedalChart.tsx (graphique des médailles - dumb)
       └── CountryCard.tsx (carte infos des pays - dumb)
       └── Router.tsx (React router pour la naviguation entre les pages - smart)
