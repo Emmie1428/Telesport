@@ -1,4 +1,5 @@
 
+
 export interface Participation {
     id: number,
     year: number,
@@ -13,11 +14,31 @@ export interface Olympic {
     participations: Participation[]
 }
 
+export interface StatLabel {
+    key: string,
+    label: string
+}
+
+export interface StatItem {
+  label: string
+  value: number
+}
+
 export interface PageContent {
     id: string,
     pageTitle: string,
     pageDescription: string,
-    pageSubtitle: string, 
-    dataEntry: number,
-    footnote: string
+    stats: StatLabel[], 
+    footnote: string,
+}
+
+export interface MedalsChartData {
+    labels: string[]
+    datasets: Array<{
+        label: string
+        data: number[]
+        backgroundColor?: string[]
+        borderColor?: string[]
+        borderWidth?: number
+    }>
 }

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
-import type { Olympic } from '../models/types'
+import type { Olympic, MedalsChartData, StatItem } from '../models/types'
 import { getAllCountriesData, getPageContent } from '../services/API'
 import ChartHeader from '../components/ChartHeader'
+import MedalsChart from '../components/MedalsChart'
+
 
 function Home() {
     const [allCountries, setAllCountries] = useState<Olympic[] | null>(null)
@@ -32,25 +34,51 @@ function Home() {
     const pageContent = getPageContent("home")
         if (!pageContent) return <div>Erreur: contenu de page introuvable</div>
 
-    // Statistiques globales
+ // Statistiques globales
     const totalCountries = allCountries?.length || 0
-    /*const totalGames = new Set(
-        allCountries?.flatMap(c => c.participations.map(p => p.year))
-    ).size || 0*/
+    const totalGamesEditions = 5
 
-    return (
+  // Calcul identique à l'original
+  const calculateTotalMedals = (country: Olympic) => {
+    return country.participations.reduce(
+      (sum, p) => sum + p.medalsCount,
+      0,
+    )
+  }
+
+  // Données pour le chart
+  const chartData: MedalsChartData = {
+    labels: allCountries!.map((d) => d.country),
+    datasets: [
+      {
+        label: 'Total des médailles',
+        data: allCountries!.map((d) => calculateTotalMedals(d)),
+      },
+    ],
+  }
+
+  const statValues: Record<string, number> = {
+    totalCountries,
+    totalGamesEditions,
+  }
+
+  const stats: StatItem[] = pageContent.stats.map((stat) => ({
+    label: stat.label,
+    value: statValues[stat.key] ?? 0,
+  }))
+
+  return (
         <div>
             <ChartHeader
             pageTitle={pageContent.pageTitle}
             pageDescription={pageContent.pageDescription}
-            pageSubtitle={pageContent.pageSubtitle}
-            dataEntry={totalCountries}
+            stats={stats}
+            chart={<MedalsChart data={chartData}/>}
             footnote={pageContent.footnote}
-             />
+            />
+              
         </div>
     )
-
-    
 }
 
 export default Home
