@@ -4,28 +4,19 @@ import {
   Chart as ChartJS,
   ArcElement,
   Tooltip,
-  Legend,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  LineElement,
-  PointElement,
+  Legend
 } from 'chart.js'
 ChartJS.register(
   ArcElement,
   Tooltip,
-  Legend,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  LineElement,
-  PointElement,
+  Legend
 )
 
 interface MedalsChartProps {
   data: MedalsChartData
 }
 
+//Déclaration du css qui doit être utilisé
 const CHART_COLORS = {
   backgroundColor: [
     'rgba(255, 99, 132, 0.6)',
@@ -56,6 +47,7 @@ const chartOptions = {
     },
   }
 
+  //Ajout du style aux données
   export default function MedalsChart({ data }: MedalsChartProps) {
   const dataWithStyles = {
     ...data,

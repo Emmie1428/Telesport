@@ -1,4 +1,4 @@
-
+import type { ReactNode } from 'react'
 
 export interface Participation {
     id: number,
@@ -22,6 +22,14 @@ export interface StatLabel {
 export interface StatItem {
   label: string
   value: number
+}
+
+export interface ChartHeaderProps {
+  pageTitle: string
+  pageDescription: string
+  stats: StatItem[]
+  footnote: string
+  chart?: ReactNode
 }
 
 export interface PageContent {

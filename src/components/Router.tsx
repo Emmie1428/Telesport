@@ -6,7 +6,6 @@ function Router() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            
         </Routes>
     )
 }
