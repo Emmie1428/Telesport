@@ -10,6 +10,18 @@ export const pageContentMockData: PageContent[] = [
             { key: 'totalGamesEditions', label: "Éditions des JO" }
         ],
         footnote: "Cliquez sur un pays pour voir ses détails"
+    },
+    {
+        id: "country", 
+        pageTitle: "Détails des performances",
+        pageDescription: "Bienvenu sur la page dédiée aux statistiques détailées du pays. Explorez leur performances et statistiques au fil des années",
+        stats: [
+            { key: 'totalParticipations', label: "Participations" },
+            { key: 'totalMedals', label: "Total des médailles" },
+            { key: 'totalAthletes', label: "Total athlètes"}
+        ],
+        footnote: "Données des 5 dernières éditions des Jeux Olympiques"
+
     }
 ]
 

@@ -20,16 +20,16 @@ export interface StatLabel {
 }
 
 export interface StatItem {
-  label: string
-  value: number
+    label: string
+    value: number
 }
 
 export interface ChartHeaderProps {
-  pageTitle: string
-  pageDescription: string
-  stats: StatItem[]
-  footnote: string
-  chart?: ReactNode
+    pageTitle: string
+    pageDescription: string
+    stats: StatItem[]
+    footnote: string
+    chart?: ReactNode
 }
 
 export interface PageContent {
@@ -49,4 +49,23 @@ export interface MedalsChartData {
         borderColor?: string[]
         borderWidth?: number
     }>
+}
+
+export interface CountryChartDataset {
+    label: string
+    data: number[]
+    backgroundColor?: string
+    borderColor?: string
+    borderWidth?: number
+    tension?: number
+    fill?: boolean
+}
+
+export interface CountryChartData {
+    labels: string[]
+    datasets: CountryChartDataset[]
+}
+
+export interface HeaderProps {
+  id: number
 }
