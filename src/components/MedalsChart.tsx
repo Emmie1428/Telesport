@@ -1,10 +1,13 @@
+import { useNavigate } from 'react-router-dom'
 import { Pie } from 'react-chartjs-2'
-import type { MedalsChartData } from '../models/types'
+import type { MedalsChartData, Olympic } from '../models/types'
 import {
   Chart as ChartJS,
   ArcElement,
   Tooltip,
-  Legend
+  Legend,
+  type ChartOptions,
+  type ActiveElement,
 } from 'chart.js'
 ChartJS.register(
   ArcElement,
@@ -14,6 +17,7 @@ ChartJS.register(
 
 interface MedalsChartProps {
   data: MedalsChartData
+  countries: Olympic[]
 }
 
 //Déclaration du css qui doit être utilisé
@@ -34,21 +38,35 @@ const CHART_COLORS = {
   ]
 }
 
-const chartOptions = {
+
+
+  //Ajout du style aux données
+export default function MedalsChart({ data, countries }: MedalsChartProps) {
+  const navigate = useNavigate()
+
+  const chartOptions: ChartOptions<'pie'> = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'bottom' as const,
+        position: 'bottom',
         labels: {
           color: 'white',
         },
       },
     },
+    onClick: (_event, elements: ActiveElement[]) => {
+      if (elements.length === 0) return
+
+      const clickedIndex = elements[0].index
+      const selectedCountry = countries[clickedIndex]
+
+      if (selectedCountry) {
+        navigate(`/country/${selectedCountry.id}`)
+      }
+    },
   }
 
-  //Ajout du style aux données
-  export default function MedalsChart({ data }: MedalsChartProps) {
   const dataWithStyles = {
     ...data,
     datasets: data.datasets.map((dataset) => ({
@@ -61,6 +79,7 @@ const chartOptions = {
 
   return (
     <div className="bg-gray-800 p-8 rounded-lg shadow-xl">
+      <h2 className="mb-4 text-center text-xl font-semibold text-white">Total des médailles par pays</h2>
       <div style={{ height: '400px' }}>
         <Pie data={dataWithStyles} options={chartOptions} />
       </div>

@@ -74,9 +74,10 @@ export default function CountryChart({ data }: CountryChartProps) {
 
     return (
     <div className="bg-gray-800 p-8 rounded-lg shadow-xl">
-        <div style={{ height: '400px' }}>
+      <h2 className="mb-4 text-center text-xl font-semibold text-white">Total des participations par années</h2>
+      <div style={{ height: '400px' }}>
         <Line data={dataWithStyles} options={evolutionOptions} />
-        </div>
+      </div>
     </div>
     )
 }

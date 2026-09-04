@@ -54,7 +54,7 @@ function Home() {
             pageTitle={pageContent.pageTitle}
             pageDescription={pageContent.pageDescription}
             stats={stats}
-            chart={<MedalsChart data={chartData}/>}
+            chart={<MedalsChart data={chartData} countries={allCountries}/>}
             footnote={pageContent.footnote}
             />
               

@@ -66,6 +66,3 @@ export interface CountryChartData {
     datasets: CountryChartDataset[]
 }
 
-export interface HeaderProps {
-  id: number
-}
