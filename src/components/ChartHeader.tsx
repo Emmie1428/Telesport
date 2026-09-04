@@ -21,8 +21,8 @@ function ChartHeader ({pageTitle, pageDescription, stats, footnote, chart}: Char
               key={stat.label}
               className="flex-1 min-w-[220px] rounded-lg bg-gray-800 p-5 text-center shadow-lg"
             >
-              <h3 className="mb-2 text-lg font-semibold">{stat.label}</h3>
-              <p className="text-3xl font-bold text-blue-400">{stat.value}</p>
+              <h2 className="mb-2 text-lg font-semibold">{stat.label}</h2>
+              <h3 className="text-3xl font-bold text-blue-400">{stat.value}</h3>
             </div>
           ))}
         </div>

@@ -3,7 +3,7 @@ import erreur from '../../public/assets/erreur.png'
 
 function Error() {
   return (
-    <div className="flex min-h-115 flex-col items-center justify-center bg-gray-900 px-6 text-white">
+    <div className="flex min-h-145 flex-col items-center justify-center bg-gray-900 px-6 text-white">
       <img
         src={erreur}
         alt="Illustration d’erreur"

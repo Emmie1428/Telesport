@@ -20,8 +20,8 @@ Interactive web application to visualize historical performance data of countrie
 Clone the repository:
 
 ```bash
-git clone https://github.com/openclassrooms/p2-dfsjs.git
-cd p2-dfsjs
+git clone https://github.com/Emmie1428/Telesport.git
+cd Telesport
 ```
 
 Install dependencies:
@@ -61,18 +61,37 @@ npm run lint
 ## 📁 Project Structure
 
 ```
-p2-dfsjs/
-├── public/              # Static public assets
+Telesport/
+├── public/                         # Static public assets
+│   ├── assets/                     # Images
 ├── src/
-│   ├── App.tsx         # Main application component
-│   ├── main.tsx        # React entry point
-│   └── index.css       # Global styles
-├── index.html          # Main HTML page
-├── package.json        # Project dependencies
-├── tsconfig.json       # TypeScript configuration
-├── vite.config.ts      # Vite configuration
-├── tailwind.config.js  # Tailwind CSS configuration
-└── .eslintrc.cjs       # ESLint configuration
+│   ├── components/
+│   │   ├── ChartHeader.tsx         # Card component       
+│   │   ├── Countrychart.tsx        # Line chart    
+│   │   ├── Footer.tsx              # Footer  
+│   │   ├── Header.tsx              # Header
+│   │   ├── MedalsChart.tsx         # Pie chart  
+│   │   ├── Router.tsx              # Router   
+│   ├── hooks/
+│   │   ├── UseData.ts              # Hook to get datas from mocks    
+│   ├── mocks/   
+│   │   ├── olympicMockData.ts      # Olympic/country mock datas  
+│   │   ├── pageContentMockData.ts  # Page content mock datas 
+│   ├── models/   
+│   │   ├── types.ts                # Type interfaces for Typescript
+│   ├── pages/
+│   │   ├── Country.tsx             # Country details page
+│   │   ├── Error.tsx               # Error page   
+│   │   ├── Home.tsx                # Home page  
+│   ├── App.tsx                     # Root
+│   ├── main.tsx                    # React entry point
+│   └── index.css                   # Global styles
+├── index.html                      # Main HTML page
+├── package.json                    # Project dependencies
+├── tsconfig.json                   # TypeScript configuration
+├── vite.config.ts                  # Vite configuration
+├── tailwind.config.js              # Tailwind CSS configuration
+└── .eslintrc.cjs                   # ESLint configuration
 ```
 
 ## 🔧 Tech Stack
@@ -108,14 +127,6 @@ For more information on the technologies used:
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [React Router Documentation](https://reactrouter.com)
 - [Chart.js Documentation](https://www.chartjs.org/docs/latest/)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-This project is available for educational and personal use.
 
 ---
 
